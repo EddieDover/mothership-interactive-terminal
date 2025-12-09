@@ -124,7 +124,7 @@ Hooks.on("getSceneControlButtons", (controls) => {
   if (tokenControls) {
     const button = {
       name: "mosh-computer",
-      title: "Open FVTT-MII Computer",
+      title: "FVTT-MII.Interface.OpenComputerInterface",
       icon: "fas fa-desktop",
       onChange: () => {
         ComputerInterface.show();
