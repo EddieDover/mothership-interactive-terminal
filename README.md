@@ -53,7 +53,7 @@ When a player attempts to bypass a login for a hackable account, they will be pr
 5.  **Brute Force**: A typing speed game where you must type the hex code displayed on screen before time runs out.
 6.  **Pattern Buffer**: A "Simon Says" memory game where you must repeat a sequence of inputs.
 
-Success grants access to the account. Failure may trigger alarms or lockout (visual/audio feedback).
+Success grants access to the account and displays the password to make subsequent logins easier.
 
 ## CLI Commands
 
