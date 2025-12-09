@@ -25,6 +25,7 @@
   "FVTT-MII.Interface.Moves": "MOVES REMAINING",
   "FVTT-MII.Interface.Mines": "MINES DETECTED",
   "FVTT-MII.Interface.TerminalLog": "TERMINAL LOG",
+  "FVTT-MII.Interface.OpenComputerInterface": "Open Computer Interface",
 
   "FVTT-MII.Hacking.Help.word-guess": "GUESS THE PASSWORD. LIKENESS INDICATES MATCHING CHARACTERS IN CORRECT POSITIONS.",
   "FVTT-MII.Hacking.Help.signal-injection": "ALIGN THE SIGNAL WITH THE MOVING TARGET ZONE. ADJUST SLIDER AND CLICK INJECT.",

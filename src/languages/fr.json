@@ -25,6 +25,7 @@
   "FVTT-MII.Interface.Moves": "MOUVEMENTS RESTANTS",
   "FVTT-MII.Interface.Mines": "MINES DÉTECTÉES",
   "FVTT-MII.Interface.TerminalLog": "JOURNAL DU TERMINAL",
+  "FVTT-MII.Interface.OpenComputerInterface": "Ouvrir l'Interface Ordinateur",
 
   "FVTT-MII.Hacking.Help.word-guess": "DEVINEZ LE MOT DE PASSE. LA RESSEMBLANCE INDIQUE LES CARACTÈRES CORRESPONDANTS AUX BONNES POSITIONS.",
   "FVTT-MII.Hacking.Help.signal-injection": "ALIGNEZ LE SIGNAL AVEC LA ZONE CIBLE EN MOUVEMENT. AJUSTEZ LE CURSEUR ET CLIQUEZ SUR INJECTER.",
