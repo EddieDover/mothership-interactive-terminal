@@ -1,0 +1,336 @@
+<div class="fvtt-mii-container">
+    <div class="header-bar">
+        <span class="blink">{{osVersion}}</span>
+        <span class="controller-info">{{localize "FVTT-MII.Interface.Controller"}} {{controllerName}}</span>
+        {{#if crackedPassword}}
+            <span class="cracked-password-display" style="margin-left: 15px; color: #0f0; font-weight: bold; text-shadow: 0 0 5px #0f0;">
+                {{localize "FVTT-MII.Interface.Password"}} {{crackedPassword}}
+            </span>
+        {{/if}}
+        {{#if isGM}}
+            <div class="gm-controls">
+                <a href="{{links.DISCORD}}" target="_blank" class="retro-btn-small" title="Discord"><i class="fab fa-discord"></i></a>
+                <a href="{{links.GITHUB_ISSUES}}" target="_blank" class="retro-btn-small" title="GitHub Issues"><i class="fab fa-github"></i></a>
+            </div>
+        {{/if}}
+        {{#if isDesktop}}
+            {{#if canInteract}}
+            <button id="logout-btn" class="retro-btn">{{localize "FVTT-MII.Interface.Logout"}}</button>
+            {{/if}}
+        {{/if}}
+    </div>
+
+    <div class="main-content">
+        {{#if isLogin}}
+            <div class="login-screen">
+                <div class="login-box">
+                    <h2>{{localize "FVTT-MII.Interface.SystemAccess"}}</h2>
+                    <div class="form-group">
+                        <label>{{localize "FVTT-MII.Interface.Username"}}</label>
+                        <input type="text" id="username" placeholder="USER" value="{{state.usernameInput}}" {{#unless canInteract}}disabled{{/unless}}>
+                    </div>
+                    <div class="form-group">
+                        <label>{{localize "FVTT-MII.Interface.Password"}}</label>
+                        <input type="password" id="password" placeholder="PASSWORD" {{#unless canInteract}}disabled{{/unless}}>
+                    </div>
+                    {{#if canInteract}}
+                    <div class="login-buttons">
+                        <button id="login-btn" class="retro-btn">{{localize "FVTT-MII.Interface.Login"}}</button>
+                        {{#if canHack}}
+                            <button id="bypass-btn" class="retro-btn warning">{{localize "FVTT-MII.Interface.Bypass"}}</button>
+                            <div class="hacking-score" style="text-align: center; margin-top: 5px; font-size: 12px; color: #0f0;">
+                                HACKING SCORE: {{hackingScore}}
+                            </div>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+                    {{#if state.loginError}}
+                        <p class="error blink">{{localize "FVTT-MII.Interface.AccessDenied"}}</p>
+                    {{/if}}
+                    {{#unless canInteract}}
+                        <p class="info">{{localize "FVTT-MII.Interface.WaitingForController"}}</p>
+                    {{/unless}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isHacking}}
+            <div class="hacking-screen">
+                <div class="hacking-container">
+                    <div class="hacking-header">
+                        <h3>{{localize "FVTT-MII.Interface.SecurityOverride"}}</h3>
+                        <div class="header-right" style="display: flex; align-items: center; gap: 15px;">
+                            <div class="attempts">
+                                {{#if hackingState.attempts}}
+                                    {{localize "FVTT-MII.Interface.Attempts"}}: <span class="attempt-count">{{hackingState.attempts}}</span>
+                                {{else if hackingState.moves}}
+                                    {{localize "FVTT-MII.Interface.Moves"}}: <span class="attempt-count">{{hackingState.moves}}</span>
+                                {{else if hackingState.mines}}
+                                    {{localize "FVTT-MII.Interface.Mines"}}: <span class="attempt-count">{{hackingState.mines}}</span>
+                                {{/if}}
+                            </div>
+                            <div class="help-icon">
+                                <i class="fas fa-question-circle"></i>
+                                <div class="help-tooltip">{{hackingHelpText}}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {{#if hackingMessage}}
+                    <div class="hacking-overlay">
+                        <div class="message-box {{hackingResult}}">
+                            <h3>{{hackingMessage}}</h3>
+                            <p>
+                                {{#if (eq hackingResult "success")}}ACCESS GRANTED{{else}}ACCESS DENIED{{/if}}
+                            </p>
+                        </div>
+                    </div>
+                    {{/if}}
+                    
+                    {{#if (eq hackingType "word-guess")}}
+                    <div class="hacking-grid">
+                        <div class="word-column">
+                            {{#each hackingState.words}}
+                                <div class="hacking-word" data-word="{{this}}">{{this}}</div>
+                            {{/each}}
+                        </div>
+                        <div class="hacking-log">
+                            <div class="log-header">{{localize "FVTT-MII.Interface.TerminalLog"}}</div>
+                            {{#each hackingState.history}}
+                                <div class="log-entry">
+                                    <span class="guess">{{this.word}}</span>
+                                    <span class="result">{{this.likeness}} / {{../hackingState.target.length}}</span>
+                                </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{/if}}
+
+                    {{#if (eq hackingType "signal-injection")}}
+                    <div class="signal-game">
+                        <div class="signal-display" style="position: relative; height: 50px; background: #001100; border: 1px solid #0f0; margin-bottom: 20px;">
+                            <div class="signal-target" style="position: absolute; top: 0; bottom: 0; left: {{hackingState.targetZone.start}}%; width: {{hackingState.targetZone.width}}%; background: rgba(0, 255, 0, 0.3); transition: left 0.1s linear;"></div>
+                            <input type="range" id="signal-slider" min="0" max="100" value="{{hackingState.injectionPoint}}" class="signal-slider" style="width: 100%;" disabled>
+                        </div>
+                        <button id="signal-inject-btn" class="retro-btn">{{localize "FVTT-MII.Interface.InjectSignal"}}</button>
+                    </div>
+                    {{/if}}
+
+                    {{#if (eq hackingType "data-stream")}}
+                    <div class="pipe-grid" style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;">
+                        {{#each hackingState.grid as |row y|}}
+                            {{#each row as |cell x|}}
+                                <div class="pipe-tile {{cell.type}} rot-{{cell.rotation}} {{#if cell.locked}}locked{{/if}} {{#if cell.isStart}}start-node{{/if}} {{#if cell.isEnd}}end-node{{/if}} {{#if cell.powered}}powered{{/if}}" data-x="{{x}}" data-y="{{y}}" style="width: 50px; height: 50px; border: 1px solid #0f0; display: flex; justify-content: center; align-items: center; cursor: pointer;">
+                                    <div style="transform: rotate({{cell.rotation}}deg); font-size: 24px;">
+                                        {{#if (eq cell.type "straight")}}│{{/if}}
+                                        {{#if (eq cell.type "corner")}}└{{/if}}
+                                        {{#if (eq cell.type "tee")}}┴{{/if}}
+                                    </div>
+                                </div>
+                            {{/each}}
+                        {{/each}}
+                    </div>
+                    {{/if}}
+
+                    {{#if (eq hackingType "node-overload")}}
+                    <div class="node-grid" style="display: grid; grid-template-columns: repeat({{hackingState.size}}, 1fr); gap: 2px;">
+                        {{#each hackingState.grid as |row y|}}
+                            {{#each row as |cell x|}}
+                                <div class="node-cell {{#if cell.isRevealed}}revealed{{/if}}" data-x="{{x}}" data-y="{{y}}" style="width: 40px; height: 40px; border: 1px solid #0f0; display: flex; justify-content: center; align-items: center; cursor: pointer; {{#if cell.isRevealed}}background: #003300;{{/if}}">
+                                    {{#if cell.isRevealed}}
+                                        {{#if cell.isMine}}X{{else}}{{cell.neighborMines}}{{/if}}
+                                    {{else}}
+                                        ?
+                                    {{/if}}
+                                </div>
+                            {{/each}}
+                        {{/each}}
+                    </div>
+                    {{/if}}
+
+                    {{#if (eq hackingType "brute-force")}}
+                    <div class="brute-force-game">
+                        <div class="timer-bar" style="width: 100%; height: 4px; background: #030; margin-bottom: 10px;">
+                            <div class="timer-fill" style="width: {{pct hackingState.timeLeft hackingState.maxTime}}%; height: 100%; background: #0f0; transition: width 0.1s linear;"></div>
+                        </div>
+                        <div class="target-code" style="font-size: 24px; margin-bottom: 20px; letter-spacing: 5px;">{{hackingState.target}}</div>
+                        <input type="text" id="brute-input" class="brute-input" placeholder="{{localize 'FVTT-MII.Interface.TypeCode'}}" autocomplete="off" value="{{hackingState.input}}" style="background: transparent; border: 1px solid #0f0; color: #0f0; font-family: monospace; font-size: 20px; padding: 10px; width: 100%;">
+                    </div>
+                    {{/if}}
+
+                    {{#if (eq hackingType "pattern-buffer")}}
+                    <div class="pattern-game">
+                        <div class="pattern-display" style="margin-bottom: 20px; font-size: 20px;">
+                            {{#if (eq hackingState.status "waiting")}}
+                                <div style="margin-bottom: 10px;">{{localize "FVTT-MII.Interface.PatternLocked"}}</div>
+                                <div style="font-size: 14px; color: #050; margin-bottom: 20px;">{{localize "FVTT-MII.Interface.ClickReady"}}</div>
+                                <button id="pattern-ready-btn" class="retro-btn" style="margin-top: 10px;">{{localize "FVTT-MII.Interface.Ready"}}</button>
+                            {{else if (eq hackingState.status "displaying")}}
+                                <div style="margin-bottom: 10px;">{{localize "FVTT-MII.Interface.MemorizePattern"}}</div>
+                                <div class="timer-bar" style="width: 100%; height: 4px; background: #030; margin-bottom: 10px;">
+                                    <div class="timer-fill" style="width: {{pct hackingState.timeLeft hackingState.maxTime}}%; height: 100%; background: #0f0; transition: width 0.1s linear;"></div>
+                                </div>
+                                <div style="letter-spacing: 5px; font-weight: bold; color: #0f0;">
+                                    {{#each hackingState.sequence}}{{this}} {{/each}}
+                                </div>
+                            {{else}}
+                                {{localize "FVTT-MII.Interface.RepeatPattern"}}
+                            {{/if}}
+                        </div>
+                        {{#if (eq hackingState.status "input")}}
+                        <div class="pattern-controls" style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                            <button class="pattern-btn retro-btn" data-value="1">1</button>
+                            <button class="pattern-btn retro-btn" data-value="2">2</button>
+                            <button class="pattern-btn retro-btn" data-value="3">3</button>
+                            <button class="pattern-btn retro-btn" data-value="4">4</button>
+                        </div>
+                        {{/if}}
+                    </div>
+                    {{/if}}
+
+                    <div class="hacking-controls" style="margin-top: 20px; text-align: center;">
+                        <button id="cancel-hack-btn" class="retro-btn warning" style="width: auto; padding: 5px 20px;">{{localize "FVTT-MII.Interface.Cancel"}}</button>
+                    </div>
+
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if isDesktop}}
+            <div class="desktop">
+                {{#unless isCLIOnly}}
+                <div class="icons-column">
+                    {{#if hasCameras}}
+                    <div class="desktop-icon" id="camera-icon">
+                        <i class="fas fa-video"></i>
+                        <span>{{localize "FVTT-MII.Interface.Cameras"}}</span>
+                    </div>
+                    {{/if}}
+                    {{#if hasFiles}}
+                    <div class="desktop-icon" id="files-icon">
+                        <i class="fas fa-folder"></i>
+                        <span>{{localize "FVTT-MII.Interface.Files"}}</span>
+                    </div>
+                    {{/if}}
+                    {{#if hasShip}}
+                    <div class="desktop-icon" id="ship-icon">
+                        <i class="fas fa-rocket"></i>
+                        <span>{{localize "FVTT-MII.Interface.ShipStatus"}}</span>
+                    </div>
+                    {{/if}}
+                </div>
+                {{/unless}}
+
+                <div class="window-area">
+                    {{#if showCLI}}
+                        <div class="app-window cli-app">
+                            <div class="app-header">{{localize "FVTT-MII.Interface.TerminalAccess"}} {{state.currentUser}}</div>
+                            <div class="cli-container">
+                                <div id="cli-output" class="cli-output">
+                                    <div class="cli-line">{{localize "FVTT-MII.Interface.AuthorizedAccess"}}</div>
+                                    <div class="cli-line">{{localize "FVTT-MII.Interface.HelpCommand"}}</div>
+                                    {{#each cliHistory}}
+                                        <div class="cli-line">{{{this}}}</div>
+                                    {{/each}}
+                                </div>
+                                <div class="cli-input-line">
+                                    <span class="prompt">&gt;</span>
+                                    <input type="text" id="cli-input" autocomplete="off" autofocus>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+
+                    {{#if showShip}}
+                        <div class="app-window ship-app">
+                            <div class="app-header">{{localize "FVTT-MII.Interface.ShipStatus"}}</div>
+                            <div class="ship-status-display">
+                                <div class="status-row">
+                                    <label>{{localize "FVTT-MII.Interface.Hull"}}</label>
+                                    <div class="bar-container">
+                                        <div class="bar-fill hull" style="width: {{shipStatus.hull.pct}}%"></div>
+                                        <span class="bar-text">{{shipStatus.hull.value}} / {{shipStatus.hull.max}}</span>
+                                    </div>
+                                </div>
+                                <div class="status-row">
+                                    <label>{{localize "FVTT-MII.Interface.Fuel"}}</label>
+                                    <div class="bar-container">
+                                        <div class="bar-fill fuel" style="width: {{shipStatus.fuel.pct}}%"></div>
+                                        <span class="bar-text">{{shipStatus.fuel.value}} / {{shipStatus.fuel.max}}</span>
+                                    </div>
+                                </div>
+                                <div class="status-row">
+                                    <label>{{localize "FVTT-MII.Interface.Oxygen"}}</label>
+                                    <div class="bar-container">
+                                        <div class="bar-fill oxygen" style="width: {{shipStatus.oxygen.pct}}%"></div>
+                                        <span class="bar-text">{{shipStatus.oxygen.value}} / {{shipStatus.oxygen.max}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+
+                    {{#if showCamera}}
+                        <div class="app-window camera-app">
+                            <div class="app-header">{{localize "FVTT-MII.Interface.SecurityFeed"}} {{activeCamera.name}}</div>
+                            <div class="camera-viewport">
+                                <div class="camera-feed" style="background-image: url('{{activeCamera.src}}');">
+                                    <div class="scanline"></div>
+                                    <div class="static-overlay"></div>
+                                </div>
+                            </div>
+                            {{#if canInteract}}
+                            <div class="controls">
+                                <button id="prev-cam" class="retro-btn">&lt; {{localize "FVTT-MII.Interface.Prev"}}</button>
+                                <button id="next-cam" class="retro-btn">{{localize "FVTT-MII.Interface.Next"}} &gt;</button>
+                            </div>
+                            {{/if}}
+                        </div>
+                    {{/if}}
+
+                    {{#if showFiles}}
+                        <div class="app-window files-app">
+                            <div class="app-header">{{localize "FVTT-MII.Interface.FileSystem"}} {{state.currentUser}}</div>
+                            <div class="files-layout">
+                                <div class="files-sidebar">
+                                    <ul class="file-list">
+                                        {{#each fileList}}
+                                        <li class="file-link {{#if (eq ../state.activeFile this.id)}}active{{/if}}" data-file="{{this.id}}">
+                                            {{#if this.isImage}}
+                                                <i class="fas fa-image"></i>
+                                            {{else if this.isMacro}}
+                                                <i class="fas fa-cogs"></i>
+                                            {{else}}
+                                                <i class="fas fa-file-alt"></i>
+                                            {{/if}}
+                                            {{this.title}}
+                                        </li>
+                                        {{/each}}
+                                    </ul>
+                                </div>
+                                <div class="files-main">
+                                    {{#if activeFileContent}}
+                                        <div class="file-content">
+                                            <div class="file-header">
+                                                <span>{{activeFileContent.title}}</span>
+                                            </div>
+                                            {{#if activeFileContent.isImage}}
+                                                <div class="file-image-view" style="flex: 1; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #001100; border: 1px solid #030;">
+                                                    <img src="{{activeFileContent.content}}" alt="{{activeFileContent.title}}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+                                                </div>
+                                            {{else}}
+                                                <div class="markdown-content">{{{activeFileContent.content}}}</div>
+                                            {{/if}}
+                                        </div>
+                                    {{else}}
+                                        <div class="placeholder-text">{{localize "FVTT-MII.Interface.SelectFile"}}</div>
+                                    {{/if}}
+                                </div>
+                            </div>
+                        </div>
+                    {{/if}}
+                </div>
+            </div>
+        {{/if}}
+    </div>
+</div>

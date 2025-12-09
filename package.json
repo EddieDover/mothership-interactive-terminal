@@ -1,0 +1,50 @@
+{
+  "name": "mothership-interactive-terminal",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An immersive, synchronized computer terminal for Mothership RPG in Foundry VTT. Features interactive hacking minigames, file system exploration, camera feeds, and ship status monitoring.",
+  "homepage": "https://github.com/EddieDover/mothership-interactive-terminal",
+  "url": "https://github.com/EddieDover/mothership-interactive-terminal",
+  "bugs": {
+    "url": "https://github.com/EddieDover/mothership-interactive-terminal/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EddieDover/mothership-interactive-terminal"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Eddie Dover",
+    "email": "ed@eddiedover.dev",
+    "discord": "EddieDover",
+    "flags": {}
+  },
+  "type": "module",
+  "main": "scripts/module.js",
+  "scripts": {
+    "build": "node build.js",
+    "copy": "node copy.js",
+    "deploy": "npm run build && npm run copy",
+    "package": "node build.js --package",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.1",
+    "@vitest/coverage-v8": "^4.0.15",
+    "archiver": "^7.0.1",
+    "commit-and-tag-version": "^12.6.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "sass": "^1.93.2",
+    "vitest": "^4.0.15"
+  },
+  "commit-and-tag-version": {
+    "skip": {
+      "commit": true,
+      "tag": true
+    }
+  }
+}

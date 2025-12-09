@@ -1,0 +1,59 @@
+{
+  "id": "mothership-interactive-terminal",
+  "title": "Mothership Interactive Terminal",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Eddie Dover",
+      "email": "ed@eddiedover.dev",
+      "url": "https://github.com/eddiedover/"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "mosh",
+        "type": "system",
+        "compatibility": {
+          "minimum": "0.6.0",
+          "verified": "0.6.0"
+        }
+      },
+      {
+        "id": "mothership-fr",
+        "type": "system",
+        "compatibility": {
+          "minimum": "1.6.41",
+          "verified": "1.6.41"
+        }
+      }
+    ]
+  },
+  "esmodules": ["scripts/module.js"],
+  "styles": ["styles/fvtt-mii.css"],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    },
+    {
+      "lang": "es",
+      "name": "Español",
+      "path": "languages/es.json"
+    },
+    {
+      "lang": "fr",
+      "name": "Français",
+      "path": "languages/fr.json"
+    }
+  ],
+  "socket": true,
+  "url": "",
+  "manifest": "",
+  "download": ""
+}
