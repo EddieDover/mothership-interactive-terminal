@@ -342,6 +342,30 @@ describe("Hacking Minigames", () => {
       expect(game.state.status).toBe("lost");
       expect(game.isLost).toBe(true);
     });
+
+    it("should flood fill when revealing a zero-neighbor cell", () => {
+      // Clear all mines to ensure flood fill works across the board
+      for(let y=0; y<6; y++) {
+        for(let x=0; x<6; x++) {
+          game.state.grid[y][x].isMine = false;
+          game.state.grid[y][x].neighborMines = 0;
+        }
+      }
+      
+      // Reset game state for this scenario
+      game.state.revealedCount = 0;
+      game.state.targetCount = 36; // 6x6 - 0 mines
+      game.state.mines = 0;
+
+      // Reveal top-left corner
+      const result = game.handleAction({ type: "reveal", x: 0, y: 0 });
+      
+      // Should reveal everything because they are all connected 0s
+      expect(game.state.revealedCount).toBe(36);
+      expect(game.state.status).toBe("won");
+      expect(result.success).toBe(true);
+      expect(result.complete).toBe(true);
+    });
   });
 
   describe("DataStreamGame", () => {
