@@ -912,6 +912,7 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
     this.activeGame = HackingGameRegistry.create(type, bonus, this);
 
     this.computerState.view = "hacking";
+    this.computerState.controllerId = game.user.id;
     this.computerState.hackingType = type;
     this.computerState.hackingState = this.activeGame.state;
     this.computerState.hackingScore = bonus;
@@ -1108,6 +1109,7 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
         AudioController.play("STARTUP");
       } else {
         this.computerState.view = "login";
+        this.computerState.controllerId = null;
         this.computerState.loginError = true;
         this.computerState.hackingState = null;
         this.computerState.hackingType = null;
