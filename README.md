@@ -14,6 +14,7 @@ This module requires one of the following Mothership Systems for FoundryVTT:
 - **Login Screen**: Requires a username and password to access.
 - **Synchronized State**: One player drives the interface (the controller), while others watch in real-time. Controller is determined by who logs in first.
 - **Camera & File System**: Give your players access to a faux-camera system and filesystem with which to gather lore and mission information.
+- **Macro Activation**: Create 'commands' the players can execute to fire off macros you've created.
 - **Ship Status Monitor**: View real-time Hull, Fuel, and Oxygen levels for your ship (requires specific access).
 
 ### Localized For
