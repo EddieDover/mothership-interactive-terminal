@@ -69,7 +69,61 @@ The terminal includes a functional Command Line Interface (CLI). Available comma
 
 ## Screenshots
 
-TBA
+<details>
+   <summary>Login</summary>
+
+   | Login | Login with Hacking Enabled |
+| --- | --- |
+| <img width="511" height="564" alt="image" src="https://github.com/user-attachments/assets/71190eb6-53c0-4449-891d-ec9a8e1d292d" /> | <img width="511" height="564" alt="image" src="https://github.com/user-attachments/assets/3541bc22-8cf8-42e6-ae92-9c183eb3422f" /> |
+   
+</details>
+
+<details>
+   <summary>Journal Structure</summary>
+
+| Journal Folder Structure | Journal Structure |
+| --- | --- |
+| <img width="296" height="183" alt="image" src="https://github.com/user-attachments/assets/5417e981-d1ef-4e4c-96ec-12fefae974ee" /> | <img width="964" height="806" alt="image" src="https://github.com/user-attachments/assets/a9d4cf19-3709-43db-be2f-97c172e57da6" /> |
+
+</details>
+
+<details>
+   <summary>View Types</summary>
+
+| GUI View | CLI View |
+| --- | --- |
+| <img width="915" height="712" alt="image" src="https://github.com/user-attachments/assets/579f49a6-2081-443d-a4c0-289545c19b35" /> | <img width="915" height="712" alt="image" src="https://github.com/user-attachments/assets/9a381349-636d-43a4-aaf3-641a04634b12" /> |
+
+</details>
+
+<details>
+   <summary>Hacking Games</summary>
+
+| Word Guess |
+| --- |
+| <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/31492115-5883-4457-864b-1e0eb76f0564" /> |
+
+| Signal Injection |
+| --- |
+| <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/93af9b78-0012-4429-91a3-e7fb8742c115" /> |
+
+| Data Stream |
+| --- |
+| <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/93e20e3d-d08d-4b2d-bebe-79a7bd06466a" /> |
+
+| Node Overload |
+| --- |
+| <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/a54878c6-eee3-4d9a-ba5c-e6911b35a211" /> |
+
+| Brute Force |
+| --- |
+| <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/5083532d-d172-421a-9b47-6958cb3fd53e" /> |
+
+| Pattern Buffer Prep | Pattern Buffer |
+| --- | --- |
+| <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/79238202-6fe7-485e-91b0-0f476d8a6d79" /> | <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/a1182e62-0492-4df1-ad81-5753ed3fa25e" /> |
+
+</details>
 
 ## Licenses
 
