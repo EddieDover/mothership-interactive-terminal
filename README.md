@@ -16,6 +16,7 @@ This module requires one of the following Mothership Systems for FoundryVTT:
 - **Camera & File System**: Give your players access to a faux-camera system and filesystem with which to gather lore and mission information.
 - **Macro Activation**: Create 'commands' the players can execute to fire off macros you've created.
 - **Ship Status Monitor**: View real-time Hull, Fuel, and Oxygen levels for your ship (requires specific access).
+- **Journal Driven**: All files, access, and options are driven using Journals and Journal Folders.
 
 ### Localized For
 
