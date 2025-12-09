@@ -6,6 +6,13 @@ import { PatternBufferGame } from "../src/scripts/hacking/PatternBufferGame.js";
 import { SignalInjectionGame } from "../src/scripts/hacking/SignalInjectionGame.js";
 import { WordGuessGame } from "../src/scripts/hacking/WordGuessGame.js";
 
+// Mock global game object
+global.game = {
+  i18n: {
+    localize: (key) => key,
+  },
+};
+
 describe("Hacking Minigames", () => {
   describe("BruteForceGame", () => {
     let game;
@@ -163,10 +170,11 @@ describe("Hacking Minigames", () => {
     });
 
     it("should handle successful injection", () => {
-      // Force slider value to be inside target zone
-      const targetCenter =
-        game.state.targetZone.start + game.state.targetZone.width / 2;
-      const result = game.handleAction({ type: "inject", value: targetCenter });
+      // Force injection point to be inside target zone
+      game.state.targetZone = { start: 40, end: 60, width: 20 };
+      game.state.injectionPoint = 50; // Inside 40-60
+
+      const result = game.handleAction({ type: "inject" });
       expect(result.success).toBe(true);
       expect(result.complete).toBe(true);
       expect(game.state.status).toBe("won");
@@ -176,7 +184,8 @@ describe("Hacking Minigames", () => {
     it("should handle failed injection", () => {
       // Force a miss
       game.state.targetZone = { start: 80, end: 90, width: 10 };
-      game.state.zonePos = 10;
+      game.state.injectionPoint = 10; // Outside 80-90
+
       const result = game.handleAction({ type: "inject" });
       expect(result.success).toBe(false);
       expect(game.state.attempts).toBe(2);
@@ -203,7 +212,8 @@ describe("Hacking Minigames", () => {
 
     it("should lose after max attempts", () => {
       game.state.targetZone = { start: 80, end: 90, width: 10 };
-      game.state.zonePos = 10;
+      game.state.injectionPoint = 10; // Outside 80-90
+
       // 3 misses
       game.handleAction({ type: "inject" });
       game.handleAction({ type: "inject" });
@@ -232,16 +242,21 @@ describe("Hacking Minigames", () => {
 
     it("should initialize sequence", () => {
       expect(game.state.sequence.length).toBeGreaterThan(0);
-      expect(game.state.status).toBe("displaying");
+      expect(game.state.status).toBe("waiting");
     });
 
     it("should transition to input state", () => {
       game.handleAction({ type: "ready" });
+      expect(game.state.status).toBe("displaying");
+
+      // Fast forward time
+      game.update(100000);
       expect(game.state.status).toBe("input");
     });
 
     it("should handle correct sequence input", () => {
       game.handleAction({ type: "ready" });
+      game.update(100000); // Skip to input
       const sequence = game.state.sequence;
 
       for (let i = 0; i < sequence.length - 1; i++) {
@@ -263,6 +278,7 @@ describe("Hacking Minigames", () => {
 
     it("should fail on incorrect input", () => {
       game.handleAction({ type: "ready" });
+      game.update(100000); // Skip to input
       const correct = game.state.sequence[0];
       const wrong = correct === 1 ? 2 : 1;
 
