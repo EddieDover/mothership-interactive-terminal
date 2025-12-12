@@ -1,6 +1,16 @@
 {
   "id": "mothership-interactive-terminal",
   "title": "Mothership Interactive Terminal",
+  "url": "https://github.com/EddieDover/mothership-interactive-terminal",
+  "bugs": "https://github.com/EddieDover/mothership-interactive-terminal/issues",
+  "changelog": "https://github.com/EddieDover/mothership-interactive-terminal/releases",
+  "manifest": "https://github.com/EddieDover/mothership-interactive-terminal/releases/latest/download/module.json",
+  "download": "https://github.com/EddieDover/mothership-interactive-terminal/releases/latest/download/module.zip",
+  "license": "https://github.com/EddieDover/mothership-interactive-terminal/raw/main/LICENSE",
+  "readme": "https://github.com/EddieDover/mothership-interactive-terminal/raw/main/README.md",
+  "flags": {
+    "allowBugReporter": true
+  },
   "version": "1.0.0",
   "compatibility": {
     "minimum": "13",
@@ -53,7 +63,4 @@
     }
   ],
   "socket": true,
-  "url": "",
-  "manifest": "",
-  "download": ""
 }
