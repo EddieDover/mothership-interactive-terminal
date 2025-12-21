@@ -1,5 +1,4 @@
 import { ComputerInterface } from "./apps/ComputerInterface.js";
-import { HackingGameRegistry } from "./hacking/HackingGameRegistry.js";
 import { MoshSocket } from "./socket.js";
 
 Hooks.once("init", () => {
@@ -65,23 +64,6 @@ Hooks.once("init", () => {
       },
     }
   );
-
-  // Minigame Toggle Settings
-  const gameTypes = HackingGameRegistry.getTypes();
-  gameTypes.forEach((type) => {
-    game.settings.register(
-      "mothership-interactive-terminal",
-      `enableGame-${type}`,
-      {
-        name: `FVTT-MII.Settings.EnableGame.${type}.Name`,
-        hint: `FVTT-MII.Settings.EnableGame.${type}.Hint`,
-        scope: "world",
-        config: true,
-        type: Boolean,
-        default: true,
-      }
-    );
-  });
 
   // Audio File Settings
   const sounds = ["startup", "keypress", "click", "error", "success", "fail"];

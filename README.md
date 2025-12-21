@@ -38,7 +38,7 @@ This module requires one of the following Mothership Systems for FoundryVTT:
 
    - To create **Executable Macros**, create a **Text** page inside the `CONTENTS` journal with a title starting with `MACRO:`, e.g., `MACRO: Self Destruct`. The content of the page should be the exact name of the Macro in your Foundry world that you want to execute.
 
-   - To make an account **Hackable**, create a page titled `HACKABLE` inside the `CONTENTS` Journal. This will allow players to attempt to bypass the password using a minigame. The difficulty of the minigame is based on the hacking actor's **Intellect** + **Computers (+10)** OR **Hacking (+15)**. This total bonus can be scaled globally using the "Hacking Difficulty Multiplier" in the module settings.
+   - To make an account **Hackable**, create a **Text** page titled `HACKABLE` inside the `CONTENTS` Journal. This will allow players to attempt to bypass the password using a minigame. The difficulty of the minigame is based on the hacking actor's **Intellect** + **Computers (+10)** OR **Hacking (+15)**. This total bonus can be scaled globally using the "Hacking Difficulty Multiplier" in the module settings. Leaving this page empty will result in all mini-games being available to players when they hack. If you wish to control which minigames appear, then enter the minigame keywords you wish to make available, separated by commas. Ex: "brute-force, data-stream"
 
    - To enable **CLI Only Mode** for an account (no GUI icons), create a page titled `CLI` inside the inside the `CONTENTS` Journal.
 
@@ -46,12 +46,12 @@ This module requires one of the following Mothership Systems for FoundryVTT:
 
 When a player attempts to bypass a login for a hackable account, they will be presented with one of the following minigames. The GM can enable or disable specific minigames in the module settings to fit the tone of their campaign.
 
-1.  **Word Guess**: A "Fallout-style" terminal game where you must guess the correct password from a list of words based on likeness.
-2.  **Signal Injection**: A timing game where you must inject a signal into a moving target zone.
-3.  **Data Stream**: A pipe-mania style puzzle where you must rotate tiles to connect a data stream from start to finish.
-4.  **Node Overload**: A "Minesweeper-style" game where you must reveal safe nodes without triggering a security mine.
-5.  **Brute Force**: A typing speed game where you must type the hex code displayed on screen before time runs out.
-6.  **Pattern Buffer**: A "Simon Says" memory game where you must repeat a sequence of inputs.
+1.  **Word Guess**: Keyword: "word-guess". A "Fallout-style" terminal game where you must guess the correct password from a list of words based on likeness.
+2.  **Signal Injection**: Keyword: "signal-injection". A timing game where you must inject a signal into a moving target zone.
+3.  **Data Stream**: Keyword: "data-stream". A pipe-mania style puzzle where you must rotate tiles to connect a data stream from start to finish.
+4.  **Node Overload**: Keyword: "node-overload". A "Minesweeper-style" game where you must reveal safe nodes without triggering a security mine.
+5.  **Brute Force**: Keyword: "brute-force". A typing speed game where you must type the hex code displayed on screen before time runs out.
+6.  **Pattern Buffer**: Keyword: "pattern-buffer". A "Simon Says" memory game where you must repeat a sequence of inputs.
 
 Success grants access to the account and displays the password to make subsequent logins easier.
 
@@ -72,17 +72,17 @@ The terminal includes a functional Command Line Interface (CLI). Available comma
 <details>
    <summary>Login</summary>
 
-   | Login | Login with Hacking Enabled |
-| --- | --- |
+| Login                                                                                                                              | Login with Hacking Enabled                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="511" height="564" alt="image" src="https://github.com/user-attachments/assets/71190eb6-53c0-4449-891d-ec9a8e1d292d" /> | <img width="511" height="564" alt="image" src="https://github.com/user-attachments/assets/3541bc22-8cf8-42e6-ae92-9c183eb3422f" /> |
-   
+
 </details>
 
 <details>
    <summary>Journal Structure</summary>
 
-| Journal Folder Structure | Journal Structure |
-| --- | --- |
+| Journal Folder Structure                                                                                                           | Journal Structure                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="296" height="183" alt="image" src="https://github.com/user-attachments/assets/5417e981-d1ef-4e4c-96ec-12fefae974ee" /> | <img width="964" height="806" alt="image" src="https://github.com/user-attachments/assets/a9d4cf19-3709-43db-be2f-97c172e57da6" /> |
 
 </details>
@@ -90,8 +90,8 @@ The terminal includes a functional Command Line Interface (CLI). Available comma
 <details>
    <summary>View Types</summary>
 
-| GUI View | CLI View |
-| --- | --- |
+| GUI View                                                                                                                           | CLI View                                                                                                                           |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="915" height="712" alt="image" src="https://github.com/user-attachments/assets/579f49a6-2081-443d-a4c0-289545c19b35" /> | <img width="915" height="712" alt="image" src="https://github.com/user-attachments/assets/9a381349-636d-43a4-aaf3-641a04634b12" /> |
 
 </details>
@@ -99,28 +99,28 @@ The terminal includes a functional Command Line Interface (CLI). Available comma
 <details>
    <summary>Hacking Games</summary>
 
-| Word Guess |
-| --- |
+| Word Guess                                                                                                                         |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/31492115-5883-4457-864b-1e0eb76f0564" /> |
 
-| Signal Injection |
-| --- |
+| Signal Injection                                                                                                                   |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/93af9b78-0012-4429-91a3-e7fb8742c115" /> |
 
-| Data Stream |
-| --- |
+| Data Stream                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/93e20e3d-d08d-4b2d-bebe-79a7bd06466a" /> |
 
-| Node Overload |
-| --- |
+| Node Overload                                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/a54878c6-eee3-4d9a-ba5c-e6911b35a211" /> |
 
-| Brute Force |
-| --- |
+| Brute Force                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="519" height="527" alt="image" src="https://github.com/user-attachments/assets/5083532d-d172-421a-9b47-6958cb3fd53e" /> |
 
-| Pattern Buffer Prep | Pattern Buffer |
-| --- | --- |
+| Pattern Buffer Prep                                                                                                                | Pattern Buffer                                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/79238202-6fe7-485e-91b0-0f476d8a6d79" /> | <img width="511" height="461" alt="image" src="https://github.com/user-attachments/assets/a1182e62-0492-4df1-ad81-5753ed3fa25e" /> |
 
 </details>
