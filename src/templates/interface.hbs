@@ -31,7 +31,7 @@
                     </div>
                     <div class="form-group">
                         <label>{{localize "FVTT-MII.Interface.Password"}}</label>
-                        <input type="password" id="password" placeholder="PASSWORD" {{#unless canInteract}}disabled{{/unless}}>
+                        <input type="text" id="password" class="password-input" placeholder="PASSWORD" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" {{#unless canInteract}}disabled{{/unless}}>
                     </div>
                     {{#if canInteract}}
                     <div class="login-buttons">

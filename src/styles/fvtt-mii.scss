@@ -105,6 +105,10 @@
     box-sizing: border-box;
   }
 
+  .form-group input.password-input {
+    -webkit-text-security: disc;
+  }
+
   .form-group input:disabled {
     border-color: #050;
     color: #050;
