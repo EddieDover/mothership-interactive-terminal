@@ -106,18 +106,5 @@
   "FVTT-MII.Notifications.MacroNotFound": "Macro not found: {name}",
 
   "FVTT-MII.Errors.RootFolderNotFound": "MOSH Interface: Root folder '{rootFolderName}' not found in Journals.",
-  "FVTT-MII.Notifications.NoMinigamesEnabled": "No hacking minigames are enabled by the GM.",
-
-  "FVTT-MII.Settings.EnableGame.word-guess.Name": "Enable Word Guess (Fallout)",
-  "FVTT-MII.Settings.EnableGame.word-guess.Hint": "If checked, the Word Guess minigame can appear during hacking attempts.",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Name": "Enable Signal Injection (Timing)",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Hint": "If checked, the Signal Injection minigame can appear during hacking attempts.",
-  "FVTT-MII.Settings.EnableGame.data-stream.Name": "Enable Data Stream (Pipes)",
-  "FVTT-MII.Settings.EnableGame.data-stream.Hint": "If checked, the Data Stream minigame can appear during hacking attempts.",
-  "FVTT-MII.Settings.EnableGame.node-overload.Name": "Enable Node Overload (Minesweeper)",
-  "FVTT-MII.Settings.EnableGame.node-overload.Hint": "If checked, the Node Overload minigame can appear during hacking attempts.",
-  "FVTT-MII.Settings.EnableGame.brute-force.Name": "Enable Brute Force (Typing)",
-  "FVTT-MII.Settings.EnableGame.brute-force.Hint": "If checked, the Brute Force minigame can appear during hacking attempts.",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Name": "Enable Pattern Buffer (Memory)",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Hint": "If checked, the Pattern Buffer minigame can appear during hacking attempts."
+  "FVTT-MII.Notifications.NoMinigamesEnabled": "No hacking minigames are enabled by the GM."
 }

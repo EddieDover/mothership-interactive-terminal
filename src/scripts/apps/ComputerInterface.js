@@ -57,6 +57,18 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
     }
   }
 
+  static parseHackableInstructions(text, allTypes) {
+    if (!text) return null;
+
+    const tokens = text.toLowerCase().split(/[\s,]+/);
+    if (tokens.includes("all")) {
+      return allTypes;
+    }
+
+    const enabledTypes = allTypes.filter((type) => tokens.includes(type));
+    return enabledTypes.length > 0 ? enabledTypes : null;
+  }
+
   get title() {
     return (
       game.settings.get("mothership-interactive-terminal", "interfaceTitle") ||
@@ -330,9 +342,7 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
 
     // Check if any hacking games are enabled
     const allTypes = HackingGameRegistry.getTypes();
-    const enabledTypes = allTypes.filter((type) =>
-      game.settings.get("mothership-interactive-terminal", `enableGame-${type}`)
-    );
+    const enabledTypes = this._getEnabledTypes(allTypes);
     const hackingEnabled = enabledTypes.length > 0;
 
     const context = {
@@ -865,6 +875,42 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
     this.render();
   }
 
+  _getEnabledTypes(allTypes) {
+    let enabledTypes = [];
+    let hasOverride = false;
+
+    // Check HACKABLE page content for overrides
+    if (this.computerState.hackTargetId) {
+      const journal = game.journal.get(this.computerState.hackTargetId);
+      const hackablePage = journal?.pages.contents.find(
+        (p) => p.name === "HACKABLE"
+      );
+
+      if (hackablePage && hackablePage.type === "text") {
+        // Extract text content
+        const tempDiv = document.createElement("div");
+        tempDiv.innerHTML = hackablePage.text.content;
+        const text = (tempDiv.textContent || tempDiv.innerText || "").trim();
+
+        const overrides = ComputerInterface.parseHackableInstructions(
+          text,
+          allTypes
+        );
+        if (overrides) {
+          enabledTypes = overrides;
+          hasOverride = true;
+        }
+      }
+    }
+
+    // Fallback to all games if no override found
+    if (!hasOverride) {
+      enabledTypes = allTypes;
+    }
+
+    return enabledTypes;
+  }
+
   _getHackingBonus(actor) {
     if (!actor) return 0;
     let bonus = 0;
@@ -896,9 +942,7 @@ export class ComputerInterface extends HandlebarsApplicationMixin(
 
     // Randomly select a game type
     const allTypes = HackingGameRegistry.getTypes();
-    const enabledTypes = allTypes.filter((type) =>
-      game.settings.get("mothership-interactive-terminal", `enableGame-${type}`)
-    );
+    const enabledTypes = this._getEnabledTypes(allTypes);
 
     if (enabledTypes.length === 0) {
       ui.notifications.warn(

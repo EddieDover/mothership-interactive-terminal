@@ -106,18 +106,5 @@
   "FVTT-MII.Notifications.MacroNotFound": "Macro no encontrada: {name}",
 
   "FVTT-MII.Errors.RootFolderNotFound": "Interfaz MOSH: Carpeta raíz '{rootFolderName}' no encontrada en Diarios.",
-  "FVTT-MII.Notifications.NoMinigamesEnabled": "No hay minijuegos de hackeo habilitados por el DJ.",
-
-  "FVTT-MII.Settings.EnableGame.word-guess.Name": "Habilitar Adivinar Palabra (Fallout)",
-  "FVTT-MII.Settings.EnableGame.word-guess.Hint": "Si está marcado, el minijuego Adivinar Palabra puede aparecer durante los intentos de hackeo.",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Name": "Habilitar Inyección de Señal (Timing)",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Hint": "Si está marcado, el minijuego Inyección de Señal puede aparecer durante los intentos de hackeo.",
-  "FVTT-MII.Settings.EnableGame.data-stream.Name": "Habilitar Flujo de Datos (Tuberías)",
-  "FVTT-MII.Settings.EnableGame.data-stream.Hint": "Si está marcado, el minijuego Flujo de Datos puede aparecer durante los intentos de hackeo.",
-  "FVTT-MII.Settings.EnableGame.node-overload.Name": "Habilitar Sobrecarga de Nodos (Buscaminas)",
-  "FVTT-MII.Settings.EnableGame.node-overload.Hint": "Si está marcado, el minijuego Sobrecarga de Nodos puede aparecer durante los intentos de hackeo.",
-  "FVTT-MII.Settings.EnableGame.brute-force.Name": "Habilitar Fuerza Bruta (Mecanografía)",
-  "FVTT-MII.Settings.EnableGame.brute-force.Hint": "Si está marcado, el minijuego Fuerza Bruta puede aparecer durante los intentos de hackeo.",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Name": "Habilitar Búfer de Patrones (Memoria)",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Hint": "Si está marcado, el minijuego Búfer de Patrones puede aparecer durante los intentos de hackeo."
+  "FVTT-MII.Notifications.NoMinigamesEnabled": "No hay minijuegos de hackeo habilitados por el DJ."
 }

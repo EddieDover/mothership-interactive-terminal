@@ -106,18 +106,5 @@
   "FVTT-MII.Notifications.MacroNotFound": "Macro introuvable : {name}",
 
   "FVTT-MII.Errors.RootFolderNotFound": "Interface MOSH : Dossier racine '{rootFolderName}' introuvable dans les Journaux.",
-  "FVTT-MII.Notifications.NoMinigamesEnabled": "Aucun mini-jeu de piratage n'est activé par le MJ.",
-
-  "FVTT-MII.Settings.EnableGame.word-guess.Name": "Activer Deviner le Mot (Fallout)",
-  "FVTT-MII.Settings.EnableGame.word-guess.Hint": "Si coché, le mini-jeu Deviner le Mot peut apparaître lors des tentatives de piratage.",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Name": "Activer Injection de Signal (Timing)",
-  "FVTT-MII.Settings.EnableGame.signal-injection.Hint": "Si coché, le mini-jeu Injection de Signal peut apparaître lors des tentatives de piratage.",
-  "FVTT-MII.Settings.EnableGame.data-stream.Name": "Activer Flux de Données (Tuyaux)",
-  "FVTT-MII.Settings.EnableGame.data-stream.Hint": "Si coché, le mini-jeu Flux de Données peut apparaître lors des tentatives de piratage.",
-  "FVTT-MII.Settings.EnableGame.node-overload.Name": "Activer Surcharge de Nœuds (Démineur)",
-  "FVTT-MII.Settings.EnableGame.node-overload.Hint": "Si coché, le mini-jeu Surcharge de Nœuds peut apparaître lors des tentatives de piratage.",
-  "FVTT-MII.Settings.EnableGame.brute-force.Name": "Activer Force Brute (Dactylographie)",
-  "FVTT-MII.Settings.EnableGame.brute-force.Hint": "Si coché, le mini-jeu Force Brute peut apparaître lors des tentatives de piratage.",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Name": "Activer Tampon de Motifs (Mémoire)",
-  "FVTT-MII.Settings.EnableGame.pattern-buffer.Hint": "Si coché, le mini-jeu Tampon de Motifs peut apparaître lors des tentatives de piratage."
+  "FVTT-MII.Notifications.NoMinigamesEnabled": "Aucun mini-jeu de piratage n'est activé par le MJ."
 }
