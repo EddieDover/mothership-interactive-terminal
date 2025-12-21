@@ -1,7 +1,7 @@
 {
   "name": "mothership-interactive-terminal",
   "private": true,
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An immersive, synchronized computer terminal for Mothership RPG in Foundry VTT. Features interactive hacking minigames, file system exploration, camera feeds, and ship status monitoring.",
   "homepage": "https://github.com/EddieDover/mothership-interactive-terminal",
   "url": "https://github.com/EddieDover/mothership-interactive-terminal",

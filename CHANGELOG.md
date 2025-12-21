@@ -1,4 +1,11 @@
 
+## [1.1.1](https://github.com/EddieDover/mothership-interactive-terminal/compare/v1.1.0...v1.1.1) (2025-12-21)
+
+
+### Bug Fixes
+
+* prevent password field from prompt password managers ([9fc3fa6](https://github.com/EddieDover/mothership-interactive-terminal/commit/9fc3fa68b51695c82bc9b5f13a06e5c6287a91f1))
+
 ## [1.1.0](https://github.com/EddieDover/mothership-interactive-terminal/compare/v1.0.0...v1.1.0) (2025-12-21)
 
 
